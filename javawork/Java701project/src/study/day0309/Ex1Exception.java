@@ -9,7 +9,7 @@ class ExcepTest1
 		int []arr= {5,7,9};
 		for(int i=0;i<=arr.length;i++)
 		{
-			//예외 발생가능부분에서 try~catch를 이용해서 직접처리
+			//예외 발생가능부분에서 try~catch를 이용해서 직접처리 (컨트롤 + 1)
 			try {
 				
 			System.out.println(arr[i]);
@@ -32,7 +32,7 @@ class ExcepTest1
 		System.out.printf("%d+%d=%d\n",su1,su2,su1+su2);
 		}catch (NumberFormatException e) {
 			// TODO: handle exception
-			System.out.println("문자가 입력된 것 같습니다.: "+e.getMessage());
+			System.out.println("문자가 입력된 것 같습니다.\n "+e.getMessage());
 		}
 	}
 }

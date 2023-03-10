@@ -36,11 +36,11 @@ public class Ex7ScoreRead {
 				
 				System.out.printf("%5s", scores);
 				
-				if (idx++ % 5 == 0)
+				if (idx++ % 4 == 0)//4행
 					System.out.println();
 				count++;
 				}catch(NumberFormatException e) {
-//					System.out.println("\n문자포함된 숫자가 발견됨");
+//					System.out.println("문자포함된 숫자가 발견됨");
 				}
 			}
 
