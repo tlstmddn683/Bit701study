@@ -9,3 +9,5 @@ drop user c##scott;
 create user scott identified by a1234;
 --기본권한주기
 grant connect,resource to scott;
+--scott 테이블 생성시 오류
+alter user 계정이름 default tablespace users quota unlimited on users;
