@@ -161,5 +161,5 @@ drop sequence seq1;
 drop sequence seq3;
 
 drop table cart;
-drop table shop;
+drop table shop1;
 drop table person;

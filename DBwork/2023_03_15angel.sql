@@ -59,7 +59,7 @@
      alter table person rename column today to ipsaday;
      --제약조건 제거: name 에 not null 제약조건이 들어있다(제약조건 이름을 안줘서 기본이름으로 들어가있다.)
      --SYS_C008317제거
-     alter table person drop constraint SYS_C008317;
+     alter table person drop constraint SYS_C008345;
       --name에 새로운 제약조건을 추가해보자 (unique)
       alter table person add constraint PERSON_UQ_NAME UNIQUE(NAME);
       --이름에 같은 이름을 넣으면 이제 오류가 발생함
@@ -73,7 +73,7 @@
       insert into person (num,name,age) values(100,'유아인',60);--오류발생4
       --문제 
       --PK 제약조건을 제거후 PERSON_PK_NUM 이라는 새로운 제약조건을 추가해보자
-      alter table person drop constraint SYS_C008318;
+      alter table person drop constraint SYS_C008346;
       alter table person add constraint PERSON_PK_NUM primary key(NUM);
       --문제2
       --buseo  라는 컬럼 추가 varchar2(10) 기본값을 '교육부'
