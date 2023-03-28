@@ -41,7 +41,7 @@ SimpleBoardDao dao = new SimpleBoardDao();
 List<SimpleBoardDto> list = dao.getAllDatas();
 %>
 <body>
-	<div style="margin: 30px 50px">
+	<div style="margin: 30px 50 px">
 		<button type="button" class="btn btn-secondary btn-sm"
 			style="width: 120px;" onclick="location.href='boardform.jsp'">
 			<i class="bi bi-pencil-fill"></i>&nbsp;글 작성하기

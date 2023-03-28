@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+ <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<style>
+	body,body *{
+	font-family: 'Jua'
+	
+	}
+</style>
+</head>
+<body>
+		<%
+		
+		
+	//로그인상태확인
+	String loginstate=(String)session.getAttribute("loginstate");
+	
+	if(loginstate==null)
+	{%>
+	<h3 align="center">페이지에 접속하시려면 로그인을 먼저 해주세요</h3>
+	<b style="margin-left:400px;font-size:30px;"><a href="mysessionmain.jsp">메인페이지</a></b>
+	<div align="center"><img src="../image/121.png"></div>
+	<%}else{%>
+	<jsp:include page="myboardlist.jsp" />
+	<%}
+	
+	
+	%>
+	
+	
+</body>
+</html>
