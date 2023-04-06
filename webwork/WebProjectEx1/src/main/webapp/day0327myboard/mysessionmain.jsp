@@ -23,6 +23,7 @@
 </style>
 </head>
 <body>
+
 	<!--  로그인상태인지 확인후 로그인 또는 로그아웃 페이지 include -->
 	<%
 	String loginstate = (String) session.getAttribute("loginstate");
@@ -36,7 +37,6 @@
 	<%
 	}
 	%>
-	
-	<b><a href="mysuccesspage.jsp" id="link">나의 블로그로 이동</a></b>
+	<b><a href="mysuccesspage.jsp" id="link">나의 블로그로 바로이동</a></b>
 </body>
 </html>

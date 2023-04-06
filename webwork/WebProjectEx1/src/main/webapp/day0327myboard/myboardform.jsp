@@ -26,15 +26,15 @@ body	{
 </style>
 </head>
 <body>
-	<div style="margin: 50px 50px">
+	<div style="margin: 50px 400px">
 		<!--이미지가 출력되는곳입니다 -->
 		<img id="showimg"
-			style="position: absolute; left: 165px; top: 470px; max-width: 350px;">
+			style="position: absolute; left: 427px; top: 500px; max-width: 550px;">
 		<form action="myboardaction.jsp" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered" style="width: 600px;">
 				<caption align="top">
-					<b style="margin-left: 210px; font-size: 22px">게시글 작성하기</b>
+					<b style="margin-left: 200px; font-size: 22px">게시글 작성하기</b>
 				</caption>
 				<tr class="table-primary">
 					<th  width="100">작성자</th>

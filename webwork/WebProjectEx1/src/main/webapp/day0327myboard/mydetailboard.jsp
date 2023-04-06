@@ -40,36 +40,35 @@ int num = Integer.parseInt(request.getParameter("num"));
 MyBoardDao dao = new MyBoardDao();
 //조회수 증가
 dao.updateMyReadCount(num);
-//추천 증가
-dao.updateMyLike(num);
 //dto
 MyBoardDto dto = dao.getMyData(num);
 //날짜 출력 형식
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
 <body>
-	<div>
-		<table class="table table-bordered" style="width: 700px">
+	<div style="margin:50px 400px;">
+		<table class="table table-bordered" style="width: 700px;border:1px solid gray;">
 			<tr>
 				<td>
 					<h3>
 						<button type="button" class="btn btn-outline-primary" 
 				style="width:100px" onclick="location.href='myboardlist.jsp'">
 				<i class="bi bi-list"></i>&nbsp;목록</button>
-				<b style="margin-left:130px;"><%=dto.getTitle()%></b>
+				<b style="margin-left:120px;"><%=dto.getTitle()%></b>
 					</h3>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<h5>
-						<%=dto.getWriter()%>
+						<%=dto.getWriter()%><br>
+						<span style="color: gray; font-size: 12px;">조회수<%=dto.getReadcount()%>&nbsp;추천<%=dto.getlikes()%>&nbsp;비추천<%=dto.getUnlikes() %></span>
 					</h5> 
 					<span class="day"><%=sdf.format(dto.getWriteday())%></span>
 				</td>
 			</tr>
 			<tr>
-				<td valign="top"><span style="color: gray; font-size: 12px;">조회수<%=dto.getReadcount()%>&nbsp;&nbsp;추천<%=dto.getLike()%></span>
+				<td valign="top">
 					<br><br>
 			<!-- 저장시 br이 \n으로 db에 저장된다
 			그래서 출력시 다시 br로 변경해야됨
@@ -83,7 +82,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				%>
 				<br><br>
 				<!-- onerror <<<-- 사진을 가져오다가 오류발생시 사진을 안보이게해줌 -->
-				<img src="../save/<%=dto.getPhoto()%>" style="max-width:700px;margin-left:25px;"
+				<img src="../save/<%=dto.getPhoto()%>" style="max-width:650px;margin:30px 20px; margin-left:30px;"
 				onerror="this.src='../image/noimage.jpg'">
 				<%}%>
 				</td>
@@ -91,8 +90,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			<tr>
 			<td>
 			<button type="button" class="btn btn-outline-secondary" 
-				style="width:100px; margin-left:280px;" id="like_btn" onclick="update(<%=dto.getLike()%>)"><img src="../image/like/like.png" id="likeimg" width="30">
-						&nbsp;추천</button>
+				style="width:100px; margin-left:205px; "onclick="update(<%=dto.getNum()%>)">
+				<i class="bi bi-star-fill"></i>&nbsp;추천</button>
+				<button type="button" class="btn btn-outline-secondary" 
+				style="width:100px; margin-left:50px; "onclick="update2(<%=dto.getNum()%>)">
+				<i class="bi bi-star"></i>&nbsp;비추천</button>
 			</td>
 			</tr>
 			<tr>
@@ -117,7 +119,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		</table>
 	</div>
 	
-	
 <script type="text/javascript">
 function del(num)
 	{
@@ -127,16 +128,23 @@ function del(num)
 			location.href="mydeleteboard.jsp?num="+num;
 		}
 	}
-</script>
-<script>	
-function update(like)
+function update(num)
 {
 	/* alert(num); */
-	let b=confirm("이 게시글을 추천하시겠습니까?")
+	let b=confirm("추천을 하려면 [확인]을 눌러주세요")
 	if(b){
 		location.href="mylikeboard.jsp?num="+num;
 	}
-}
-  </script>    
+}	
+function update2(num)
+{
+	/* alert(num); */
+	let b=confirm("비추천을 하려면 [확인]을 눌러주세요")
+	if(b){
+		location.href="myunlikeboard.jsp?num="+num;
+	}
+}	
+
+</script>  
 </body>
 </html>

@@ -35,7 +35,15 @@ a:hover{
 	text-decoration: underline;
 	color:pink;
 }
-
+div.container{
+	margin-left:400px;
+	background-color:pink;
+	width:440px;
+	height:42px;
+	border-radius:10px;
+	border:1px solid gray;
+	box-shadow:2px 2px 2px gray;
+}
 </style>
 </head>
 <%
@@ -51,9 +59,9 @@ String loginid = (String) session.getAttribute("loginid");
 	<h2 align="Left" class="alert alert-danger">
 	<button type="button" class="btn btn-outline-danger btn-sm"
 	onclick="location.href='mylogoutaction.jsp'" style="margin-left: 10px">
-	<i class="bi bi-box-arrow-right"></i>세션로그아웃</button><b style="font-size:12px; margin-left:30px;"> 
+	<i class="bi bi-box-arrow-right"></i>로그아웃</button><b style="font-size:12px; margin-left:30px;"> 
 		현재 <%=loginid %>님이 로그인 중입니다.</b>
-		<b style="margin-left:50px;">나의 블로그</b></h2>
+		<b style="margin-left:230px;">나의 블로그</b></h2>
 		<div>
 		<div class="container">
 			<div class="row">
@@ -79,19 +87,20 @@ String loginid = (String) session.getAttribute("loginid");
 				</div>
 		
 		<table class="table table-bordered"
-			style="width: 700px; margin: 50px 50px; background-color:white;">
+			style="width: 1000px; margin: 100px 200px; background-color:white;">
 			<caption align="top" style="background-color:lightpink" >
 				<b style="color:black">&nbsp;<%=list.size() == 0 ? "MyBoard" : "총" + list.size() + "개 의 글이 있습니다"%></b>
 			</caption>
 		
 			<tr bgcolor="lightpink">
 				<th width="50">번호</th>
-				<th width="300"><b style="margin-left:120px;">제목</b></th>
-				<th width="100"><b style="margin-left:10px;">카테고리</b></th>
+				<th width="300"><b style="margin-left:180px;">제목</b></th>
+				<th width="100"><b style="margin-left:40px;">카테고리</b></th>
 				<th width="60">작성자</th>
-				<th width="70"><b style="margin-left:20px;">작성일</b></th>
+				<th width="70"><b style="margin-left:40px;">작성일</b></th>
 				<th width="60">조회수</th>
 				<th width="50">추천</th>
+				<th width="50">비추천</th>
 			</tr>
 			<%
 			if (list.size() == 0) {
@@ -124,7 +133,8 @@ String loginid = (String) session.getAttribute("loginid");
 				<td align="center"><%=dto.getWriter()%></td>
 				<td align="center"><%=sdf.format(dto.getWriteday())%></td>
 				<td align="center"><%=dto.getReadcount()%></td>
-				<td align="center"><%=dto.getLike()%></td>
+				<td align="center"><%=dto.getlikes()%></td>
+				<td align="center"><%=dto.getUnlikes()%></td>
 				</tr>
 			<%
 			}

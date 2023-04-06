@@ -11,13 +11,15 @@ public class MyBoardDto {
 	private int readcount;
 	private Timestamp writeday;
 	private String category;
-	private int like;
+	private int likes;
+	private int unlikes;
+	
 	public MyBoardDto() {
 		super();
 	}
 
 	public MyBoardDto(int num, String title, String content, String writer, String photo, int readcount,
-			Timestamp writeday, String category ,int like) {
+			Timestamp writeday, String category ,int likes ,int unlikes) {
 		super();
 		
 		this.num = num;
@@ -28,7 +30,8 @@ public class MyBoardDto {
 		this.readcount = readcount;
 		this.writeday = writeday;
 		this.category= category;
-		this.like=like;
+		this.likes=likes;
+		this.unlikes=unlikes;
 	}
 	
 
@@ -41,13 +44,22 @@ public class MyBoardDto {
 		this.photo = photo;
 		this.category=category;
 	}
+	
 
-	public int getLike() {
-		return like;
+	public int getUnlikes() {
+		return unlikes;
 	}
 
-	public void setLike(int like) {
-		this.like = like;
+	public void setUnlikes(int unlikes) {
+		this.unlikes = unlikes;
+	}
+
+	public int getlikes() {
+		return likes;
+	}
+
+	public void setlikes(int likes) {
+		this.likes = likes;
 	}
 
 	public int getNum() {

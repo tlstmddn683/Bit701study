@@ -17,7 +17,7 @@
 	
 	}
 	body{
-	background:url("../image/12345.jpg")no-repeat center;
+	background:url("../image/12123.jpg")no-repeat center;
 	background-size:cover;
 	}
 </style>
@@ -28,17 +28,17 @@ MyBoardDao dao=new MyBoardDao();
 MyBoardDto dto=dao.getMyData(num);
 %>
 <body>
-	<div style="margin: 50px 50px">
+	<div style="margin: 50px 400px">
 		<!--이미지가 출력되는곳입니다 -->
 		<img id="showimg" src="../save/<%=dto.getPhoto() %>"
-			style="position: absolute; left: 165px; top: 470px; max-width: 350px;">
+			style="position: absolute; left: 423px; top: 500px; max-width: 550px; ">
 		<form action="myupdateboardaction.jsp" method="post"
 			enctype="multipart/form-data">
 				<!-- hidden -->
 			<input type="hidden" name="num" value="<%=dto.getNum()%>">
 			<table class="table table-bordered" style="width: 600px;">
 				<caption align="top">
-					<b style="margin-left: 200px; font-size: 22px">게시글 작성하기</b>
+					<b style="margin-left: 200px; font-size: 22px">게시글 수정하기</b>
 				</caption>
 				<tr class="table-secondary">
 					<th  width="100">작성자</th>

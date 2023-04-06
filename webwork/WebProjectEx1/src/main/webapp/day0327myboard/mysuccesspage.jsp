@@ -26,7 +26,7 @@
 	if(loginstate==null)
 	{%>
 	<h3 align="center">페이지에 접속하시려면 로그인을 먼저 해주세요</h3>
-	<b style="margin-left:400px;font-size:30px;"><a href="mysessionmain.jsp">메인페이지</a></b>
+	<b style="margin-left:800px;font-size:30px;"><a href="mysessionmain.jsp">메인페이지</a></b>
 	<div align="center"><img src="../image/121.png"></div>
 	<%}else{%>
 	<jsp:include page="myboardlist.jsp" />

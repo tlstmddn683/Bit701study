@@ -143,5 +143,41 @@ public class PersonDao {
 
 		return list;
 	}
+	
+		public List<PersonDto>getSearchNamePersons(String sword) {
+			List<PersonDto> list = new Vector<>();
+			Connection conn = db.getMysqlConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 
+			String sql = "select * from person where name like? order by num asc";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				//ㅂㅇㄷ
+				pstmt.setString(1, "%"+sword+"%");
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					PersonDto dto = new PersonDto();
+					// dto에 데이터 넣기
+					dto.setNum(rs.getInt("num"));
+					dto.setName(rs.getString("name"));
+					dto.setBirthyear(rs.getInt("birthyear"));
+					dto.setAddress(rs.getString("address"));
+					dto.setJob(rs.getString("job"));
+					dto.setPhoto(rs.getString("photo"));
+					// dto를 list에 추가
+					list.add(dto);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+
+			return list;
+		}
+
+	
 }
+

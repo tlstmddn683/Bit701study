@@ -51,35 +51,33 @@ public class MyBoardDao {
 		String SQL= "select * from myboard where"+searchField.trim();
 		try {
 			if(searchText != null && ! searchText.equals("")) {
-				SQL+="LIKE'%"+searchText.trim()+"%' order by writer desc limit 10";
+				SQL+="likes'%"+searchText.trim()+"%' order by num desc limit 10";
 			}
 			pstmt=conn.prepareStatement(SQL);
 			rs=pstmt.executeQuery();
 		while(rs.next()) {
-			MyBoardDto dto=new MyBoardDto();
-			dto.setNum(rs.getInt(1));
-			dto.setTitle(rs.getString(2));
-			dto.setWriter(rs.getString(3));
-			dto.setPhoto(rs.getString(4));
-			dto.setReadcount(rs.getInt(5));
-			dto.setWriteday(rs.getTimestamp(6));
-			dto.setCategory(rs.getString(7));
-			dto.setLike(rs.getInt(8));
+			int num = rs.getInt("num");
+			String title = rs.getString("title");
+			String content = rs.getString("content");
+			String writer = rs.getString("writer");
+			String photo = rs.getString("photo");
+			int readcount = rs.getInt("readcount");
+			Timestamp writeday = rs.getTimestamp("writeday");
+			String category=rs.getString("category");
+			int likes=rs.getInt("likes");
+			int unlikes=rs.getInt("unlikes");
+			MyBoardDto dto=new MyBoardDto(num, title, content, writer, photo, readcount, writeday,category,likes,unlikes);
 			list.add(dto);
 		}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
-	
 	
 	// all select
 	public List<MyBoardDto> getMyAllDatas() {
@@ -101,9 +99,9 @@ public class MyBoardDao {
 				int readcount = rs.getInt("readcount");
 				Timestamp writeday = rs.getTimestamp("writeday");
 				String category=rs.getString("category");
-				int like=rs.getInt("like");
-
-				MyBoardDto dto = new MyBoardDto(num, title, content, writer, photo, readcount, writeday,category,like);
+				int likes=rs.getInt("likes");
+				int unlikes=rs.getInt("unlikes");
+				MyBoardDto dto = new MyBoardDto(num, title, content, writer, photo, readcount, writeday,category,likes,unlikes);
 				// list에 추가
 				list.add(dto);
 			}
@@ -137,12 +135,12 @@ public class MyBoardDao {
 		}
 
 	}
-	//like 증가
+	//likes 증가
 	public void updateMyLike(int num) {
 		Connection conn = db.getMysqlConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "update myboard set like=like+1 where num=?";
+		String sql = "update myboard set likes=likes+1,readcount=readcount-1 where num=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
@@ -158,6 +156,27 @@ public class MyBoardDao {
 		}
 
 	}
+	//unlikes 증가
+		public void updateMyUnLike(int num) {
+			Connection conn = db.getMysqlConnection();
+			PreparedStatement pstmt = null;
+
+			String sql = "update myboard set unlikes=unlikes+1,readcount=readcount-1 where num=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				// 바인딩
+				pstmt.setInt(1, num);
+				// 실행
+				pstmt.execute();
+				
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				db.dbClose(pstmt, conn);
+			}
+
+		}
 	// detail view
 	public MyBoardDto getMyData(int num) {
 		MyBoardDto dto = null;
@@ -181,9 +200,10 @@ public class MyBoardDao {
 				int readcount = rs.getInt("readcount");
 				Timestamp writeday = rs.getTimestamp("writeday");
 				String category=rs.getString("category");
-				int like=rs.getInt("like");
+				int likes=rs.getInt("likes");
+				int unlikes=rs.getInt("unlikes");
 
-				dto = new MyBoardDto(num, title, content, writer, photo, readcount, writeday,category,like);
+				dto = new MyBoardDto(num, title, content, writer, photo, readcount, writeday,category,likes,unlikes);
 
 			}
 		} catch (Exception e) {

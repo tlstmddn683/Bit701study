@@ -39,7 +39,7 @@ if(chksave==null|| chksave.equals("no")){
 	b=true;
 %>
 <body>
-	<div style="margin: 100px 100px">
+	<div style="margin:270px 500px;">
 		<form action="myloginaction.jsp" method="post">
 			<table class="table table-bordered" id="logintable">
 				<tr class="table-danger">
@@ -60,7 +60,7 @@ if(chksave==null|| chksave.equals("no")){
 				<tr class="table-danger">
 					<td colspan="2" align="center">
 						<button type="submit" class="btn btn-light" style="border:1px solid gray; background-color:white;">
-						<i class="bi bi-box-arrow-in-right"></i>세션로그인</button>
+						<i class="bi bi-box-arrow-in-right"></i>로그인</button>
 					</td>
 				</tr>
 			</table>

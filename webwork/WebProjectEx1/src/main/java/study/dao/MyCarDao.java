@@ -90,5 +90,37 @@ public class MyCarDao {
 		}
 		return list;	
 	}
-
+	public List<MyCarDto>getMyCarList(String search)
+	{
+		List<MyCarDto>list= new Vector<>();
+		Connection conn = db.getMysqlConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql="select * from mycar where carname like? order by num asc";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			//ㅂㅇㄷ
+			pstmt.setString(1,"%"+search+"%");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				MyCarDto dto=new MyCarDto();
+				//dto
+				dto.setNum(rs.getInt("num"));
+				dto.setCarname(rs.getString("carname"));
+				dto.setCarprice(rs.getInt("carprice"));
+				dto.setCarphoto(rs.getString("carphoto"));
+				dto.setGuipday(rs.getString("guipday"));
+				
+				list.add(dto);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+	return list;	
+	}
 }
