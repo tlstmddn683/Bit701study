@@ -26,7 +26,11 @@
 		<img src="./res/image/${carphoto}" width="200"><br>
 		차량명 : ${sangpum}<br>
 		가  격 :${price}<br>
-		색  상 :${color}
+		색  상 :${color}<br>
+		<img src="./res/image/${carphoto2}" width="200"><br>
+		차량명 : ${sangpum2}<br>
+		가  격 :${price2}<br>
+		색  상 :${color2}
 		
 	</h4>
 	<button type="button" class="btn btn-outline-success" onclick="history.back()">돌아가기</button>

@@ -13,11 +13,15 @@
 	<constructor-arg>
 		<value>저는 여행을 좋아합니다</value>
 	</constructor-arg>
+	<constructor-arg>
+		<value>경기도 광명시</value>
+	</constructor-arg>
 	</bean>
 	
 	<bean id="stu" class="study2.Student">
 	<constructor-arg ref="my"/>
 	<property name="schoolName" value="청담고등학교"/>
+	<property name="grade" value="3"/>
 	</bean>
 	
 	<!-- 3 -->

@@ -38,6 +38,10 @@ public class HomeController {
 		model.addObject("price","9천만원");
 		model.addObject("color","white");
 		model.addObject("carphoto","mycar1.png");
+		model.addObject("sangpum2","아우디");
+		model.addObject("price2","8천만원");
+		model.addObject("color2","white");
+		model.addObject("carphoto2","mycar2.png");
 		//포워드
 		model.setViewName("myshop");
 		return model;

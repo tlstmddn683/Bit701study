@@ -3,9 +3,10 @@ package study1;
 public class Message1 implements MessageInter {
 
 	@Override
-	public void sayHello(String name) {
+	public void sayHello(String name,String job) {
 		// TODO Auto-generated method stub
 		System.out.println("내이름은 "+name+"입니다.");
+		System.out.println("내 직업은 "+job+"입니다.");
 	}
 
 }

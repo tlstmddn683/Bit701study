@@ -33,9 +33,7 @@
 	</h5>
 	<button type="button" class="btn btn-outline-danger" onclick="location.href='myshop'">
 	myshop으로 이동!</button>
-	
-	<br><br>
-	
+	&nbsp;
 	<button type="button" class="btn btn-outline-danger" onclick="location.href='yourshop'">
 	yourshop으로 이동!</button>
 	
