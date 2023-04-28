@@ -97,4 +97,47 @@ if(upload!=null) {
 			}
 		}
 	}
+	@GetMapping("/alist")
+	@ResponseBody
+	public List<GuestDto> alist()
+	{
+		List<GuestDto> list=guestService.getAllGuest();
+		//각 방명록글에 등록한 사진들을 가져온다
+		for(GuestDto dto:list)
+		{
+			int gidx=dto.getGuest_idx();
+			List<GuestPhotoDto> plist=guestService.getPhotos(gidx);
+			dto.setPhotoList(plist);
+		}
+		return list;
+	}
+	@GetMapping("/deletephoto")
+	@ResponseBody
+	public void deletePhoto(int photo_idx)
+	{
+		//db 데이터 삭제전 스토리지 사진 먼저 삭제
+		
+		//photo_idx 에 해당하는 파일명 얻기
+		String photoname=guestService.getSelectPhoto(photo_idx);
+		//스토리지 삭제
+		storageService.deleteFile(bucketName, "guest", photoname);
+		//db삭제
+		guestService.deletePhoto(photo_idx);
+	}
+	//방명록 글삭제
+	@GetMapping("/delete")
+	@ResponseBody
+	public void delete(int guest_idx)
+	{
+		//방명록 삭제전 그 글에 연결된 모든 사진부터 스토리지에서 삭제
+		List<String> list=guestService.getAllPhoto(guest_idx);
+		for(String photoname:list) {
+			storageService.deleteFile(bucketName, "guest", photoname);
+			
+		}
+		//db에서 글삭제
+		//on delete cascade 설정시 외부키로 연결된 데이타들은 자동으로 삭제된다.
+		//설정을 안했을 경우 자식 테이블로 부터 먼저 삭제후 부모 테이블을 삭제한다
+		guestService.deleteGuest(guest_idx);
+	}
 }

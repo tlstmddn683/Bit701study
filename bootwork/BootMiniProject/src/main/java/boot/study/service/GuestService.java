@@ -37,5 +37,35 @@ public class GuestService implements GuestServiceinter {
 		// TODO Auto-generated method stub
 		return guestMapper.getPhotos(guest_idx);
 	}
+
+	@Override
+	public void deletePhoto(int photo_idx) {
+		// TODO Auto-generated method stub
+		guestMapper.deletePhoto(photo_idx);
+	}
+
+	@Override
+	public void deleteAllPhoto(int guest_idx) {
+		// TODO Auto-generated method stub
+		guestMapper.deleteAllPhoto(guest_idx);
+	}
+
+	@Override
+	public void deleteGuest(int guest_idx) {
+		// TODO Auto-generated method stub
+		guestMapper.deleteGuest(guest_idx);
+	}
+
+	@Override
+	public String getSelectPhoto(int photo_idx) {
+		// TODO Auto-generated method stub
+		return guestMapper.getSelectPhoto(photo_idx);
+	}
+
+	@Override
+	public List<String> getAllPhoto(int guest_idx) {
+		// TODO Auto-generated method stub
+		return guestMapper.getAllPhoto(guest_idx);
+	}
 	
 }

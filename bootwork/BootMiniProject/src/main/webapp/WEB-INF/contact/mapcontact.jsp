@@ -19,10 +19,7 @@
 </style>
 </head>
 <body>
-<div style="text-align:center;font-size:30px;">
-오시는길
-</div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34034.58095441178!2d128.8447937766595!3d41.99745153138713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5fcb16206f264c65%3A0xd1ae97259d7a0618!2z7KGw7ISg66-87KO87KO87J2Y7J2466-86rO17ZmU6rWtIOufieqwleuPhCDrjIDtmY3ri6g!5e0!3m2!1sko!2skr!4v1681452694360!5m2!1sko!2skr" width="700" height="500" style="border:1;position:absolute;top:50px;left:100px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+<div style="text-align:center;font-size:30px;"><b>오시는길</b></div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1613824.3566510868!2d126.91104065413377!3d37.81345266847178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356237ec59968d89%3A0xe150c7d25a07a6e!2z6rCV7JuQ64-E!5e0!3m2!1sko!2skr!4v1682581752609!5m2!1sko!2skr" width="600" height="450" style="border:1;margin-left:50px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </body>
 </html>

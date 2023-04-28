@@ -33,7 +33,7 @@
 <body>
 <a href="${root}/">
 <i class="bi bi-house-door-fill home"></i>
-<b class="title">대홍단 KING감자</b>
+<b class="title">강원도 왕감자</b>
 </a>
 </body>
 </html>
