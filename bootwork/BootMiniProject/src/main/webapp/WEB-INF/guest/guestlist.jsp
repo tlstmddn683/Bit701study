@@ -164,7 +164,7 @@ $(function(){
 			//alert(photo_idx);
 			$.ajax({
 				type:"get",
-				url:"/deletephoto",
+				url:"./deletephoto",
 				data:{"photo_idx":photo_idx},
 				dataType:"text",
 				success:function(){
@@ -175,8 +175,26 @@ $(function(){
 			});
 		}
 	});
-	
-	
+	//방명록 삭제 이벤트
+	$(document).on("click",".guestdel",function(){
+		//e.stopPropagation(); 이벤트 버블링을 제어해주는 코드
+		let b=confirm("해당 방명록을 삭제하시겠습니까?");
+		if(b){
+			let guest_idx=$(this).attr("guest_idx");
+			//alert(photo_idx);
+			$.ajax({
+				type:"get",
+				url:"./delete",
+				data:{"guest_idx":guest_idx},
+				dataType:"text",
+				success:function(){
+					alert("삭제 -완-!");
+					//목록 재 호출
+					list();	
+				}
+			});
+		}
+	});
 	
 });//$function close
 
@@ -200,7 +218,9 @@ function list()
 			<div class='guest_box'>
 				<div>
 					<b>\${ele.nickname}</b>
-					<span class='today'>\${ele.writeday}</span>
+					<span class='today'>\${ele.writeday}
+					&nbsp;<i class="bi bi-trash2 guestdel" guest_idx="\${ele.guest_idx}" style="cursor:pointer;"></i>
+					</span>
 				</div>
 				<pre>\${ele.content}</pre>
 		
