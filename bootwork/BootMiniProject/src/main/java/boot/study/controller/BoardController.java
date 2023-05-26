@@ -29,34 +29,38 @@ public class BoardController {
 	private String bucketName = "bit701-bucket-115";// 각자 자기의 버켓이름
 
 	@GetMapping("/list")
-	public String list(@RequestParam(defaultValue = "1") int currentPage, Model model) {
-		// 게시판의 총 글 갯수
-		int totalCount = boardService.getTotalCount();
+	public String list(@RequestParam(defaultValue = "1") int currentPage,Model model)
+	{
+		//게시판의 총 글갯수 얻기
+		int totalCount=boardService.getTotalCount();
+		int totalPage;//총 페이지수
+		int perPage=10; //한 페이지당 보여질 글의 갯수
+		int perBlock=10;//한 블럭당 보여질 페이지의 갯수
+		int startNum;//각 페이지에서 보여질 글의 시작번호
+		int startPage;//각 블럭에서 보여질 시작 페이지번호
+		int endPage;//각 블럭에서 보여질 끝 페이지번호
+		int no;//글 출력시 출력할 시작번호
 
-		int totalPage;// 총페이지수
-		int perPage = 10;// 한페이지당 보여질 글의 갯수
-		int perBlock = 10;// 한 블럭당 보여질 페이지 갯수
-		int startNum;// 각 페이지에서 보여질 글의 시작번호
-		int startPage;// 각 블럭에서 보여질 시작페이지 번호
-		int endPage;// 각 블럭에서 보여질 끝 페이지 번호'
-		int no;// 글출력시 출력할 시작번호
-		// 총 페이지 수
-		totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
-		// 시작 페이지
-		startPage = (currentPage - 1) / perBlock * perBlock + 1;
-		// 끝 페이지
-		endPage = startPage + perBlock - 1;
-		// 이때 문제점
-		if (endPage > totalPage)
-			endPage = totalPage;
-		// 각페이지의 시작번호(1페이지 :0, 2페이지 :3, 3페이지:6....)
-		startNum = (currentPage - 1) * perPage;
-		// 각 글마다 출력할 글 번호(예: 10개 일 경우 1페이지 :10, 2페이지 :7....)
-		no = totalCount - startNum;
-		// 각페이지에 필요한 게시글 db에 가져오기
-		List<BoardDto> list = boardService.getPagingList(startNum, perPage);
+		//총 페이지수 
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1); 
+		//시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		//끝페이지
+		endPage=startPage+perBlock-1;
+		//이때 문제점....endPage 가 totalpage 보다 크면 안된다
+		if(endPage>totalPage)
+			endPage=totalPage;
 
-		// 출력시 필요한 변수들을 model 에 전부다 저장
+		//각 페이지의 시작번호(1페이지 : 0, 2페이지:3,3페이지 :6...)
+		startNum=(currentPage-1)*perPage;
+		//각 글마다 출력할 글번호(예:10개일경우 1페이지:10, 2페이지: 7...
+		//no=totalCount-(currentPage-1)*perPage;
+		no=totalCount-startNum;
+
+		//각 페이지에 필요한 게스글 db 에서 가져오기
+		List<BoardDto> list=boardService.getPagingList(startNum, perPage);
+		
+		//출력시 필요한 변수들을 model 에 몽땅 저장
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("list", list);
 		model.addAttribute("startPage", startPage);
@@ -109,7 +113,7 @@ public class BoardController {
 	public String content(int num,int currentPage,Model model)
 	{
 		//조회수 증가
-		boardService.updateReadCount(num);
+		boardService.updateReadcount(num);
 		
 		//dto얻기
 		BoardDto dto=boardService.getData(num);

@@ -12,6 +12,7 @@ import boot.study.mapper.BoardMapper;
 
 @Service
 public class BoardService implements BoardServiceinter{
+
 	@Autowired
 	private BoardMapper boardMapper;
 
@@ -33,7 +34,8 @@ public class BoardService implements BoardServiceinter{
 		Map<String, Integer> map=new HashMap<>();
 		map.put("ref", ref);
 		map.put("step", step);
-		boardMapper.updateStep(map);
+		
+		boardMapper.updateStep(map);		
 	}
 
 	@Override
@@ -46,23 +48,23 @@ public class BoardService implements BoardServiceinter{
 		
 		if(dto.getNum()==0)
 		{
-			//새글일 경우
+			//새글인경우
 			step=0;
 			depth=0;
-			ref=boardMapper.getMaxNum()+1;//새 그룹번호를 겹치지 않는 값으로 만들기 위해
-			
+			ref=boardMapper.getMaxNum()+1;//새그룹번호를 겹치지 않는 값으로 만들기 위해서~
 		}else {
-			//답글일 경우
-			//전달 받은 ref 중에 step 보다 큰 값이 있는 경우 모두 +1씩 증가시킨다
+			//답글인경우
+			//전달받은 ref중에서 step 보다 큰값이 잇는경우 모두 +1을 한다
 			this.updateStep(ref, step);
-			//그리고 전달받은 step과 depth를 1씩증가
+			//그리고 나서 전달받은 step 과 depth 에 1을 증가한다
 			step++;
-			depth++;
-			
+			depth++;			
 		}
+		
 		dto.setRef(ref);
 		dto.setStep(step);
 		dto.setDepth(depth);
+		
 		boardMapper.insertBoard(dto);
 	}
 
@@ -76,9 +78,9 @@ public class BoardService implements BoardServiceinter{
 	}
 
 	@Override
-	public void updateReadCount(int num) {
+	public void updateReadcount(int num) {
 		// TODO Auto-generated method stub
-		boardMapper.updateReadCount(num);
+		boardMapper.updateReadcount(num);
 	}
 
 	@Override
@@ -86,24 +88,52 @@ public class BoardService implements BoardServiceinter{
 		// TODO Auto-generated method stub
 		return boardMapper.getData(num);
 	}
+	
 	@Override
 	public boolean isEqualPass(int num, String pass) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map=new HashMap<>();
-		map.put("num",num);
+		map.put("num", num);
 		map.put("pass", pass);
-		//비밀번호가 맞으면 1-> true 반환, 틀리면 0 ->false 반환
+		//비번이 맞으면 1->true반환, 틀리면 0->false반환
 		boolean b=boardMapper.isEqualPass(map)==0?false:true;
 		return b;
 	}
+	
 	@Override
 	public void deleteBoard(int num) {
 		// TODO Auto-generated method stub
-	boardMapper.deleteBoard(num);
+		boardMapper.deleteBoard(num);
 	}
+	
 	@Override
 	public void updateBoard(BoardDto dto) {
 		// TODO Auto-generated method stub
 		boardMapper.updateBoard(dto);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

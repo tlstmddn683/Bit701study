@@ -13,11 +13,11 @@ public class BoardDto {
 	private String writer;
 	private String filename;
 	private String subject;
-	private String content;
-	private String pass;
+	private String content;	
+	private String pass;	
 	private int readcount;
 	private int ref;
 	private int step;
 	private int depth;
-	private Timestamp writeday;
+	private Timestamp writeday;	
 }

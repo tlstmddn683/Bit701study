@@ -11,10 +11,10 @@ import boot.study.dto.BoardDto;
 public interface BoardMapper {
 	public int getMaxNum();
 	public int getTotalCount();
-	public void updateStep(Map<String, Integer> map);//ref, step
+	public void updateStep(Map<String, Integer> map);//map:ref,step
 	public void insertBoard(BoardDto dto);
-	public List<BoardDto> getPagingList(Map<String, Integer> map);//start,perpage
-	public void updateReadCount(int num);
+	public List<BoardDto> getPagingList(Map<String, Integer> map);//map:start,perpage
+	public void updateReadcount(int num);
 	public BoardDto getData(int num);
 	public int isEqualPass(Map<String, Object> map);//num,pass
 	public void deleteBoard(int num);
