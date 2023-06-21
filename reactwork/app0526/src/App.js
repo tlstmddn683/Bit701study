@@ -5,6 +5,9 @@ import ThreeComponent from './components/ThreeComponent';
 import FiveComponent from './components/FiveComponent';
 import TwoComponent from './components/TwoComponent';
 import FourComponent from './components/FourComponent';
+import SixComponent from './components/SixComponent';
+import SevenComponent from './components/SevenComponent';
+import MunjeComponent from './components/MunjeComponent';
 
 function App() {
 const[idx,setIdx]=useState(1);
@@ -25,13 +28,17 @@ setIdx(Number(e.target.value));
       <option value={3}>뚜리 깐뽀넌뚜</option>
       <option value={4}>포올 깐뽀넌뚜</option>
       <option value={5}>뽜이브 깐뽀넌뚜</option>
-
+      <option value={6}>씩스 깐뽀넌뚜</option>
+      <option value={7}>쎄븐 깐뽀넌뚜</option>
+      <option value={8}>에잇 깐뽀넌뚜</option>
      </select>
     
      <br/><br/>
      {idx===1?<OneComponent/>:idx===2?<TwoComponent/>:
      idx===3?<ThreeComponent/>:idx===4?<FourComponent/>:
-     <FiveComponent/>
+     idx===5?<FiveComponent/>:idx===6?<SixComponent/>:
+     idx===7?<SevenComponent/>:<MunjeComponent/>
+     
      }
     </div>
   );

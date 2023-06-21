@@ -7,11 +7,52 @@ font-family: 'Jua';
 }
 .one{
 color:plum;
+position: absolute;
+top: 500px;
+left:50px;
 
 }
 .two{
   text-shadow: 1px 1px 1px crimson;
 }
+.circle{
+  width:100px;
+  height:100px;
+  border:1px solid black;
+  margin-right:5px;
+  border-radius: 100px;
+  box-shadow: 3px 3px 3px gray;
+  float:left;
+  line-height: 100px;
+  display:'flex';
+  cursor:url(./1.png);
+}
+.circle2{
+  width:40px;
+  height:40px;
+  border:1px solid black;
+  margin-right:5px;
+  margin-bottom:10px;
+  border-radius: 100px;
+  box-shadow: 3px 3px 3px gray;
+  line-height: 40px;
+}
+.photo{
+  float:left;
+  width:200px;
+  margin-right: 10px;
+  height: 300px;
+  border: 5px solid orange;
+  border-radius: 20px;
+  background-color: darksalmon;
+
+}
+.photo img{
+  width: 180px;
+
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
